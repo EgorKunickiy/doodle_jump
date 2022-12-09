@@ -12,7 +12,9 @@ BOUNCE_VELOCITY = -12.5
 
 w = tk.Tk()
 w.geometry(f"{WIDTH}x{HEIGHT}")
+w.title('Doodle Jump')
 canvas = tk.Canvas(w, height=HEIGHT, width=WIDTH)
+canvas.create_text(50, 100, text="Hello METANIT.COM", fill="#004D40")
 canvas.place(x=0, y=0, relwidth=1, relheight=1)
 person = tk.PhotoImage(file='underwater-right@2x.png')
 green_platform = tk.PhotoImage(file='greenplatform.png')
@@ -165,15 +167,17 @@ def handle_key_press(e):
         DOODLE.dx = -3
 
 
-def handle_key_release():
+def handle_key_release(e):
     global key_down
     key_down = False
 
-# Tkinter reacts to holding key as key repeating same with canvas
-# so use canvas' But that's not a problem her
-w.bind("<KeyPress>", handle_key_press)
-w.bind("<KeyRelease>", handle_key_release)
 
-# for 60 FPS
-canvas.after(17, loop)  # 17 is 1000//60
-w.mainloop()
+if __name__ =='__main__':
+    # Tkinter reacts to holding key as key repeating same with canvas
+    # so use canvas' But that's not a problem her
+    w.bind("<KeyPress>", handle_key_press)
+    w.bind("<KeyRelease>", handle_key_release)
+
+    # for 60 FPS
+    canvas.after(17, loop)  # 17 is 1000//60
+    w.mainloop()
